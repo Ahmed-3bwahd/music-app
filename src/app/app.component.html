@@ -1,0 +1,23 @@
+<div id="app">
+  <header class="appname">
+    <h1>MY MUSIC</h1>
+  </header>
+  <main>
+    <section class="song-info">
+      <h1>{{current.artist}} - {{current.title}} </h1>
+      <div class="control">
+        <button class="btn prev"  (click)="prev()">Prev</button>
+        <button class="btn play"  (click)="plays()" *ngIf="!playstate" else noplay>Play</button>
+        <button class="btn pause" (click)="pause()" *ngIf="playstate">Pause</button>
+        <button class="btn next"  (click)="next()">Next</button>
+      </div>
+    </section>
+    <section class="playlist">
+      <h1>The Playlist</h1>
+      <span *ngFor="let song of songs" (click)="play(song)" class="song"
+        [ngClass]="{'playedsong' : song.src == current.src }">
+        {{song.artist}} - {{song.title}}
+      </span>
+    </section>
+  </main>
+</div>
